@@ -48,4 +48,11 @@ public class BrandService {
 
         return new PageResult<>(brandPageInfo.getTotal(), brandPageInfo.getList());
     }
+
+    public void saveBrand(Brand brand, List<Long> cids) {
+        this.brandMapper.insertSelective(brand);
+        for (Long cid : cids) {
+            this.brandMapper.insertCategoryAndBrand(cid, brand.getId());
+        }
+    }
 }
