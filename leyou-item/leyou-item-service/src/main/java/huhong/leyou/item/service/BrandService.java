@@ -18,6 +18,7 @@ public class BrandService {
     @Autowired
     private BrandMapper brandMapper;
 
+
     public Brand queryById(Integer id) {
         return brandMapper.selectByPrimaryKey(id);
     }
@@ -54,5 +55,22 @@ public class BrandService {
         for (Long cid : cids) {
             this.brandMapper.insertCategoryAndBrand(cid, brand.getId());
         }
+    }
+
+    public List<Brand> queryAll() {
+        List<Brand> brands = brandMapper.selectAll();
+        return brands;
+    }
+
+    public void deleteById(Integer id) {
+        brandMapper.deleteByPrimaryKey(id);
+    }
+
+    public void update(Brand brand) {
+        brandMapper.updateByPrimaryKey(brand);
+    }
+
+    public void save(Brand brand) {
+        brandMapper.insert(brand);
     }
 }
