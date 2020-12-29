@@ -42,40 +42,4 @@ public class BrandController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @GetMapping("all")
-    public ResponseEntity<List<Brand>> queryAll(){
-        List<Brand> list =  this.brandService.queryAll();
-        if(CollectionUtils.isEmpty(list)){
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(list);
-    }
-
-    @GetMapping("delete/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable("id") Integer id){
-        brandService.deleteById(id);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-
-    @GetMapping("query/{id}")
-    public ResponseEntity<Brand> queryById(@PathVariable("id") Integer id){
-        Brand brand = brandService.queryById(id);
-        if(brand == null){
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(brand);
-    }
-
-    @PostMapping("update")
-    public ResponseEntity<Void> update(Brand brand){
-        this.brandService.update(brand);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-
-    @PostMapping("save")
-    public ResponseEntity<Void> save(Brand brand){
-        if(brand == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        this.brandService.save(brand);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
 }

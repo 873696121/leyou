@@ -57,20 +57,4 @@ public class BrandService {
         }
     }
 
-    public List<Brand> queryAll() {
-        List<Brand> brands = brandMapper.selectAll();
-        return brands;
-    }
-
-    public void deleteById(Integer id) {
-        brandMapper.deleteByPrimaryKey(id);
-    }
-
-    public void update(Brand brand) {
-        brandMapper.updateByPrimaryKey(brand);
-    }
-
-    public void save(Brand brand) {
-        brandMapper.insert(brand);
-    }
 }
